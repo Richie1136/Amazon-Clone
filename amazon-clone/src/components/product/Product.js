@@ -17,6 +17,7 @@ const Product = () => {
         </div>
       </div>
       <img src='https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_5Y400_.jpg' alt='book' />
+      <button>Add to Cart</button>
     </div>
   )
 }
