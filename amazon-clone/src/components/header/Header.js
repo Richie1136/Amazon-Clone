@@ -39,13 +39,6 @@ const Header = () => {
           </div>
         </Link>
       </div>
-      {/* searchbar */}
-      {/* search icon */}
-      {/* text */}
-      {/* text */}
-      {/* text */}
-      {/* text */}
-      {/* cart */}
     </div>
   )
 }
