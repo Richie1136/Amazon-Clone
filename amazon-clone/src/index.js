@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import { StateProvider } from './store/state-context'
+import cartReducer, { initialState } from './reducer'
 
 
 ReactDOM.render(
-  <StateProvider>
+  <StateProvider initialState={initialState} reducer={cartReducer}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
