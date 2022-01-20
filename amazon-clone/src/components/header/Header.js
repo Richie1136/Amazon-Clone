@@ -1,5 +1,6 @@
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Link } from 'react-router-dom';
 
 import './Header.css'
 
@@ -7,8 +8,10 @@ const Header = () => {
 
   return (
     <div className='header'>
+      <Link to='/'>
+        <img className='header-logo' src='https://pngimg.com/uploads/amazon/amazon_PNG11.png' alt='amazon' />
+      </Link>
       {/* logo */}
-      <img className='header-logo' src='https://pngimg.com/uploads/amazon/amazon_PNG11.png' alt='amazon' />
       <div className='header-search'>
         <input className='searchInput' tyoe='text' />
         <SearchIcon className='logo' />
@@ -26,10 +29,12 @@ const Header = () => {
           <span className='header-option-lineone'>Your</span>
           <span className='header-option-linetwo'>Prime</span>
         </div>
-        <div className='header-cart'>
-          <ShoppingCartIcon className='cart' alt='shopping' />
-          <span className='header-option-linetwo header-cartCount'>0</span>
-        </div>
+        <Link to='/checkout'>
+          <div className='header-cart'>
+            <ShoppingCartIcon className='cart' alt='shopping' />
+            <span className='header-option-linetwo header-cartCount'>0</span>
+          </div>
+        </Link>
       </div>
       {/* searchbar */}
       {/* search icon */}
