@@ -3,14 +3,15 @@ import Header from './components/header/Header';
 import Home from './components/home/Home';
 import { Route, Navigate, Routes, Link } from 'react-router-dom'
 import Checkout from './components/checkout/Checkout';
+import Login from './components/login/Login'
 
 function App() {
   return (
     <div className="app">
-      <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<><Header />, <Home /></>} />
+        <Route path='/checkout' element={<><Header />, <Checkout /></>} />
       </Routes>
     </div>
   );

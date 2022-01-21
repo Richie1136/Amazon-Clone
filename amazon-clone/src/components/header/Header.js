@@ -20,10 +20,12 @@ const Header = () => {
         <SearchIcon className='logo' />
       </div>
       <div className='header-nav'>
-        <div className='header-option'>
-          <span className='header-option-lineone'>Hello Guest</span>
-          <span className='header-option-linetwo'>Sign in</span>
-        </div>
+        <Link to='/login'>
+          <div className='header-option'>
+            <span className='header-option-lineone'>Hello Guest</span>
+            <span className='header-option-linetwo'>Sign in</span>
+          </div>
+        </Link>
         <div className='header-option'>
           <span className='header-option-lineone'>Returns</span>
           <span className='header-option-linetwo'>& Orders</span>
