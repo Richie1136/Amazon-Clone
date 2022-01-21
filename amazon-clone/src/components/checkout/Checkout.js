@@ -19,6 +19,7 @@ const Checkout = () => {
           </h2>
           {cart.map((item) => {
             return <CheckoutProduct
+              key={item.id}
               title={item.title}
               id={item.id}
               image={item.image}
