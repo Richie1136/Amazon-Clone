@@ -1,7 +1,14 @@
 import './Checkout.css'
 import Subtotal from '../subtotal/Subtotal'
+import CheckoutProduct from '../checkoutproducts/CheckoutProduct'
+import { useStateValue } from '../../store/state-context'
+
 
 const Checkout = () => {
+
+  const [{ cart }, dispatch] = useStateValue()
+
+
   return (
     <div className='checkout'>
       <div className='checkout-left'>
@@ -10,11 +17,15 @@ const Checkout = () => {
           <h2 className='checkout-title'>
             Your Shopping Cart
           </h2>
-          {/* CartItem */}
-          {/* CartItem */}
-          {/* CartItem */}
-          {/* CartItem */}
-
+          {cart.map((item) => {
+            return <CheckoutProduct
+              title={item.title}
+              id={item.id}
+              image={item.image}
+              rating={item.rating}
+              price={item.price}
+            />
+          })}
         </div>
       </div>
       <div className='checkout-right'>

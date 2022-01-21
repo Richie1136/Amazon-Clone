@@ -15,7 +15,14 @@ const cartReducer = (state, action) => {
       ...state,
       cart: [...state.cart, action.item],
     }
-  } else {
+  }
+
+  if (action.type === 'REMOVE_FROM_CART') {
+    return state.cart.findIndex((item) => item.id === action.id)
+  }
+
+
+  else {
     return state
   }
 }
