@@ -18,13 +18,18 @@ const Login = () => {
 
   const signin = (event) => {
     event.preventDefault()
+    auth.signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        if (auth) {
+          navigate('/')
+        }
+      }).catch(error => alert(error.message))
   }
 
   const signup = (event) => {
     event.preventDefault()
     auth.createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        console.log(auth)
         if (auth) {
           navigate('/')
         }
