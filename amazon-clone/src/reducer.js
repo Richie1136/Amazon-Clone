@@ -37,6 +37,15 @@ const cartReducer = (state, action) => {
     };
 
   }
+
+
+  if (action.type === 'SET_USER') {
+    return {
+      ...state,
+      user: action.user,
+    };
+
+  }
 }
 
 export default cartReducer

@@ -7,7 +7,8 @@ import './Header.css'
 
 const Header = () => {
 
-  const [{ cart }, dispatch] = useStateValue()
+  const [{ cart, user }, dispatch] = useStateValue()
+  console.log(user)
 
   return (
     <div className='header'>
@@ -22,8 +23,8 @@ const Header = () => {
       <div className='header-nav'>
         <Link to='/login'>
           <div className='header-option'>
-            <span className='header-option-lineone'>Hello Guest</span>
-            <span className='header-option-linetwo'>Sign in</span>
+            <span className='header-option-lineone'>Hello {user.email}</span>
+            <span className='header-option-linetwo'>{user ? 'Sign out' : 'Sign in'}</span>
           </div>
         </Link>
         <div className='header-option'>
