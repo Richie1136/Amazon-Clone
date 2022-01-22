@@ -6,7 +6,7 @@ import { useStateValue } from '../../store/state-context'
 
 const Checkout = () => {
 
-  const [{ cart }, dispatch] = useStateValue()
+  const [{ cart, user }, dispatch] = useStateValue()
 
 
   return (
@@ -14,6 +14,7 @@ const Checkout = () => {
       <div className='checkout-left'>
         <img className='checkout-ad' src='https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg' alt='checkout-logo' />
         <div>
+          <h3>Hello, {user ? user.email : 'Guest'}</h3>
           <h2 className='checkout-title'>
             Your Shopping Cart
           </h2>

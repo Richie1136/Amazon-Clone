@@ -27,7 +27,7 @@ const Header = () => {
         <SearchIcon className='logo' />
       </div>
       <div className='header-nav'>
-        <Link to='/login'>
+        <Link to={!user && '/login'}>
           <div onClick={handleAuth} className='header-option'>
             <span className='header-option-lineone'>Hello {user ? user.email : 'Guest'}</span>
             <span className='header-option-linetwo'>{user ? 'Sign out' : 'Sign in'}</span>
