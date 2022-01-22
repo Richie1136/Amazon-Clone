@@ -1,7 +1,20 @@
 import './Login.css'
 import { Link } from 'react-router-dom';
+import { useState } from 'react'
 
 const Login = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onEmailChange = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const onPasswordChange = (event) => {
+    setPassword(event.target.value)
+  }
+
   return (
     <div className='login'>
       <Link to='/'>
@@ -11,9 +24,9 @@ const Login = () => {
         <h1>Sign in</h1>
         <form>
           <h5>E-mail</h5>
-          <input type='text' />
+          <input type='text' onChange={onEmailChange} value={email} />
           <h5>Password</h5>
-          <input type='password' />
+          <input type='password' onChange={onPasswordChange} value={password} />
           <button className='signin'>Sign In</button>
         </form>
         <p>
