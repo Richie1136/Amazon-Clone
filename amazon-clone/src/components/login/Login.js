@@ -1,10 +1,10 @@
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import { auth } from '../../firebase'
 
 const Login = () => {
-
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,6 +25,9 @@ const Login = () => {
     auth.createUserWithEmailAndPassword(email, password)
       .then((auth) => {
         console.log(auth)
+        if (auth) {
+          navigate('/')
+        }
       }).catch(error => alert(error.message))
   }
 
