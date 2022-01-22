@@ -14,13 +14,14 @@ const Login = () => {
           <input type='text' />
           <h5>Password</h5>
           <input type='password' />
-          <button>Sign In</button>
+          <button className='signin'>Sign In</button>
         </form>
         <p>
-          By signing-in you agree to Amazon's Conditions of Use & Sale. Please
+          By signing-in you agree to Amazing Fake Clone Conditions of Use & Sale. Please
           see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
           Notice.
         </p>
+        <button className='signup'>Create Account</button>
       </div>
     </div>
   )
