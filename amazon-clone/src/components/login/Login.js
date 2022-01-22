@@ -1,6 +1,7 @@
 import './Login.css'
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
+import { auth } from '../../firebase'
 
 const Login = () => {
 
@@ -15,6 +16,18 @@ const Login = () => {
     setPassword(event.target.value)
   }
 
+  const signin = (event) => {
+    event.preventDefault()
+  }
+
+  const signup = (event) => {
+    event.preventDefault()
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        console.log(auth)
+      }).catch(error => alert(error.message))
+  }
+
   return (
     <div className='login'>
       <Link to='/'>
@@ -27,14 +40,14 @@ const Login = () => {
           <input type='text' onChange={onEmailChange} value={email} />
           <h5>Password</h5>
           <input type='password' onChange={onPasswordChange} value={password} />
-          <button className='signin'>Sign In</button>
+          <button type='submit' onClick={signin} className='signin'>Sign In</button>
         </form>
         <p>
           By signing-in you agree to Amazing Fake Clone Conditions of Use & Sale. Please
           see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
           Notice.
         </p>
-        <button className='signup'>Create Account</button>
+        <button onClick={signup} type='submit' className='signup'>Create Account</button>
       </div>
     </div>
   )
