@@ -16,6 +16,12 @@
   color: #111;
 }
 
+.checkout-info > button:hover {
+  color: hotpink;
+  background-color: black;
+  cursor: pointer;
+}
+
 .checkout-info {
   padding-left: 20px;
 }

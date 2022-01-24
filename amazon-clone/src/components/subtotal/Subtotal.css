@@ -29,3 +29,17 @@
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
 }
+
+.subtotal > button:hover {
+  color: hotpink;
+  background-color: black;
+  cursor: pointer;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: #111;
+}

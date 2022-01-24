@@ -1,11 +1,13 @@
 import './Home.css'
 import Product from '../product/Product'
+import CarouselComponent from '../carousel/Carousel'
 
 const Home = () => {
   return (
     <div className='home'>
       <div className='home-container'>
-        <img className='home-image' src='https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg' alt='banner' />
+        <CarouselComponent />
+        {/* <img className='home-image' src='https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg' alt='banner' /> */}
         <div className='home-row'>
           <Product title='The lean startup: How Constant Innovation Creates Radically Successful Business Paperback' price={11.99} image='https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX325_B01,204,203,200_.jpg' rating={3} />
           <Product id='49538094' title='Kenwood kMix Stand Mixer for Baking. Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl.' price={239.0} image='https://m.media-amazon.com/images/I/61etD4-IrPL._AC_SX679_.jpg' rating={4} />
