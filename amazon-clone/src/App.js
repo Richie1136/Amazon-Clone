@@ -1,13 +1,18 @@
 import './App.css';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
-import { Route, Navigate, Routes, Link } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Checkout from './components/checkout/Checkout';
 import Login from './components/login/Login'
 import { useEffect } from 'react'
 import { auth } from './firebase'
 import { useStateValue } from './store/state-context'
 import Payment from './components/payment/Payment';
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+
+
+const promise = loadStripe('pk_test_51KLuaGKANSeUz9RclNMDh7lxper4yAnHgOBCAPH7RDebVw59Z3lO8pzhM6oOYUxC58Z4Rz8AEO0aq40xNpY7haI100JBPoHsj8')
 
 
 
@@ -31,7 +36,7 @@ function App() {
         })
       }
     })
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">
@@ -39,7 +44,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/' element={<><Header />, <Home /></>} />
         <Route path='/checkout' element={<><Header />, <Checkout /></>} />
-        <Route path='/payment' element={<><Header />, <Payment /></>} />
+        <Route path='/payment' element={<><Header />, <Elements stripe={promise}><Payment /></Elements></>} />
 
       </Routes>
     </div>
