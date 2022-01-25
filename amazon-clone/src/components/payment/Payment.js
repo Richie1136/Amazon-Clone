@@ -2,10 +2,11 @@ import './Payment.css'
 import { useStateValue } from '../../store/state-context';
 import CheckoutProduct from '../checkoutproducts/CheckoutProduct';
 import { Link } from 'react-router-dom';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from '../../reducer';
+import axios from 'axios';
 
 
 
@@ -13,13 +14,33 @@ const Payment = () => {
   const [{ cart, user }, dispatch] = useStateValue()
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [buttonError, setButtonError] = useState(null);
+  const [succeeded, setSucceeded] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [clientSecret, setClientSecret] = useState(true);
+
 
   const stripe = useStripe()
   const elements = useElements()
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    // generate special stripe secret which allows us to charge a customer
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: 'post',
+        // stripe expects the total in a currencies subunits
+        url: `/payments/create?total=${getCartTotal(cart) * 100}`
+      })
+      setClientSecret(response.data.clientSecret)
+    }
+    getClientSecret()
+  }, [cart]);
+
+
+  const handleSubmit = async (event) => {
     // do all the stripe stuff
     event.preventDefault()
+    setProcessing(true)
+
 
   }
 
@@ -83,7 +104,11 @@ const Payment = () => {
                   thousandSeparator={true}
                   prefix={"$"}
                 />
+                <button disabled={processing || isButtonDisabled || succeeded}>
+                  <span>{processing ? <p>Processing</p> : 'Buy Now'}</span>
+                </button>
               </div>
+              {buttonError && <div>{buttonError}</div>}
             </form>
           </div>
         </div>
