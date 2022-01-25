@@ -1,6 +1,8 @@
 import './Payment.css'
 import { useStateValue } from '../../store/state-context';
 import CheckoutProduct from '../checkoutproducts/CheckoutProduct';
+import { Link } from 'react-router-dom';
+
 
 
 const Payment = () => {
@@ -9,6 +11,9 @@ const Payment = () => {
   return (
     <div className='payment'>
       <div className='payment-container'>
+        <h1>
+          Checkout (<Link to='/checkout'>{cart?.length} items</Link>)
+        </h1>
         <div className='payment-section'>
           <div className='payment-title'>
             <h3>Delivery Address</h3>
@@ -36,14 +41,13 @@ const Payment = () => {
           </div>
         </div>
         <div className='payment-section'>
-
+          <div className='payment-title'>
+            <h3>Delivery Address</h3>
+          </div>
+          <div className='payment-details'>
+            {/* Stripe info */}
+          </div>
         </div>
-        {/* Payment Section - Delivery address */}
-
-        {/* Payment Section - Review Items  */}
-
-        {/* Payment Section - Payment Method   */}
-
       </div>
     </div>
   )
