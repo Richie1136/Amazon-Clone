@@ -7,6 +7,7 @@ import Login from './components/login/Login'
 import { useEffect } from 'react'
 import { auth } from './firebase'
 import { useStateValue } from './store/state-context'
+import Payment from './components/payment/Payment';
 
 
 
@@ -16,7 +17,6 @@ function App() {
   useEffect(() => {
     // listener when the app loads and is always listening
     auth.onAuthStateChanged(authUser => {
-      console.log('The user is', authUser)
       if (authUser) {
         dispatch({
           type: 'SET_USER',
@@ -39,6 +39,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/' element={<><Header />, <Home /></>} />
         <Route path='/checkout' element={<><Header />, <Checkout /></>} />
+        <Route path='/payment' element={<><Header />, <Payment /></>} />
+
       </Routes>
     </div>
   );

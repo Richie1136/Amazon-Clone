@@ -6,7 +6,7 @@ import './Carousel.css'
 const CarouselComponent = () => {
   return (
     <div className="carousel-wrapper">
-      <Carousel className="carousel" infiniteLoop useKeyboardArrows autoPlay>
+      <Carousel infiniteLoop useKeyboardArrows autoPlay>
         <div>
           <img src='https://m.media-amazon.com/images/I/61eDLBa-zCL._SX3000_.jpg' />
         </div>

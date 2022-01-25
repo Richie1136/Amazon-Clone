@@ -8,7 +8,6 @@ export const getCartTotal = (cart) =>
 
 
 const cartReducer = (state, action) => {
-  console.log(action)
   if (action.type === 'ADD_TO_CART') {
 
     return {
