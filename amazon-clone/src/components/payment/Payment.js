@@ -4,13 +4,15 @@ import CheckoutProduct from '../checkoutproducts/CheckoutProduct';
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
+import CurrencyFormat from 'react-currency-format';
+import { getCartTotal } from '../../reducer';
 
 
 
 const Payment = () => {
   const [{ cart, user }, dispatch] = useStateValue()
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [buttonError, setButtonError] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [buttonError, setButtonError] = useState(null);
 
   const stripe = useStripe()
   const elements = useElements()
@@ -18,10 +20,14 @@ const Payment = () => {
   const handleSubmit = (event) => {
     // do all the stripe stuff
     event.preventDefault()
+
   }
 
   const handleChange = (event) => {
-
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setIsButtonDisabled(event.empty)
+    setButtonError(event.error ? event.error.message : '')
   }
 
   return (
@@ -64,6 +70,20 @@ const Payment = () => {
             {/* Stripe info */}
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
+              <div className='payment-priceContainer'>
+                <CurrencyFormat
+                  renderText={(value) => (
+                    <>
+                      <h3>Order Total: {value}</h3>
+                    </>
+                  )}
+                  decimalScale={2}
+                  value={getCartTotal(cart)}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                />
+              </div>
             </form>
           </div>
         </div>
