@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from '../../reducer';
-import axios from 'axios';
+import axios from '../../axios'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -19,7 +19,6 @@ const Payment = () => {
   const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState(true);
   const navigate = useNavigate()
-
 
 
   const stripe = useStripe()
@@ -38,6 +37,8 @@ const Payment = () => {
     getClientSecret()
   }, [cart]);
 
+
+  console.log("The Secret is", clientSecret)
 
   const handleSubmit = async (event) => {
     // do all the stripe stuff
