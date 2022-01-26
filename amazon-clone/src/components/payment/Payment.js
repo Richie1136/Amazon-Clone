@@ -7,6 +7,7 @@ import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from '../../reducer';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -17,6 +18,8 @@ const Payment = () => {
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState(true);
+  const navigate = useNavigate()
+
 
 
   const stripe = useStripe()
@@ -40,8 +43,17 @@ const Payment = () => {
     // do all the stripe stuff
     event.preventDefault()
     setProcessing(true)
-
-
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement)
+      }
+    }).then(({ paymentIntent }) => {
+      // paymentIntent = payment confirmation
+      setSucceeded(true)
+      setButtonError(null)
+      setProcessing(false)
+    })
+    navigate('/orders')
   }
 
   const handleChange = (event) => {
