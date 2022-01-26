@@ -50,6 +50,7 @@ const Payment = () => {
       }
     }).then(({ paymentIntent }) => {
       // paymentIntent = payment confirmation
+
       setSucceeded(true)
       setButtonError(null)
       setProcessing(false)
