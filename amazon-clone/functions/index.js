@@ -17,19 +17,19 @@ app.use(express.json())
 
 // API routes
 
-app.get('/', (req, res) => res.status(200).send("Hello World"))
+app.get("/", (request, response) => response.status(200).send("Hello World"))
 
-app.post('/payments/create', async (req, res) => {
+app.post("/payments/create", async (request, response) => {
+
   const total = request.query.total
-  console.log('Payment Request Recieved BOOM!', total)
+  console.log("Payment Request Recieved BOOM!", total)
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total,
     currency: 'usd',
   })
   // OK - Created
-  res.status(201).send({
+  response.status(201).send({
     clientSecret: paymentIntent.client_secret,
-
   })
 })
 
