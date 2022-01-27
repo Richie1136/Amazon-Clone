@@ -8,6 +8,7 @@ import CurrencyFormat from 'react-currency-format';
 import { getCartTotal } from '../../reducer';
 import axios from '../../axios'
 import { useNavigate } from 'react-router-dom'
+import { db } from '../../firebase';
 
 
 
@@ -39,6 +40,7 @@ const Payment = () => {
 
 
   console.log("The Secret is", clientSecret)
+  console.log("Person", user)
 
   const handleSubmit = async (event) => {
     // do all the stripe stuff
@@ -51,6 +53,15 @@ const Payment = () => {
     }).then(({ paymentIntent }) => {
       // paymentIntent = payment confirmation
 
+      db.collection('users')
+        .doc(user?.uid)
+        .collection('orders')
+        .doc(paymentIntent.id)
+        .set({
+          cart,
+          amount: paymentIntent.amount,
+          created: paymentIntent.created
+        })
       setSucceeded(true)
       setButtonError(null)
       setProcessing(false)
