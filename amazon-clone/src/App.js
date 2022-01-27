@@ -10,8 +10,7 @@ import { useStateValue } from './store/state-context'
 import Payment from './components/payment/Payment';
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
-import Orders from './components/orders/Orders'
-
+import Orders from './components/orders/Orders';
 
 const promise = loadStripe('pk_test_51KLuaGKANSeUz9RclNMDh7lxper4yAnHgOBCAPH7RDebVw59Z3lO8pzhM6oOYUxC58Z4Rz8AEO0aq40xNpY7haI100JBPoHsj8')
 

@@ -1,6 +1,6 @@
 import './Orders.css'
 
-const Order = () => {
+const Orders = () => {
   return (
     <div className='orders'>
       <h1>Your Orders</h1>
@@ -8,4 +8,4 @@ const Order = () => {
   )
 };
 
-export default Order;
+export default Orders;
