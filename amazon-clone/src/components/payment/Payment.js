@@ -54,6 +54,9 @@ const Payment = () => {
       setSucceeded(true)
       setButtonError(null)
       setProcessing(false)
+      dispatch({
+        type: 'EMPTY_BASKET'
+      })
     })
     navigate('/orders')
   }

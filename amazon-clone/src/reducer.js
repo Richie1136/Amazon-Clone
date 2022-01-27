@@ -37,6 +37,13 @@ const cartReducer = (state, action) => {
 
   }
 
+  if (action.type === 'EMPTY_BASKET') {
+    return {
+      ...state,
+      cart: []
+    }
+  }
+
 
   if (action.type === 'SET_USER') {
     return {
