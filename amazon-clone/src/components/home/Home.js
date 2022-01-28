@@ -9,7 +9,7 @@ const Home = () => {
         <CarouselComponent />
         <div className='home-row'>
           <Product title='The lean startup: How Constant Innovation Creates Radically Successful Business Paperback' price={11.99} image='https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX325_B01,204,203,200_.jpg' rating={3} />
-          <Product id='49538094' title='Kenwood kMix Stand Mixer for Baking. Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl.' price={27.99} image='https://m.media-amazon.com/images/I/61bHbOVPhEL._AC_UL640_QL65_.jpg' rating={4} />
+          <Product id='49538094' title='Duke Blue Devils NCAA 29.5" Full Size Rubber Outdoor Basketball by Rawlings' price={27.99} image='https://m.media-amazon.com/images/I/61bHbOVPhEL._AC_UL640_QL65_.jpg' rating={4} />
         </div>
         <div className='home-row'>
           <Product id='4903850' title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor" price={1199.99} image='https://m.media-amazon.com/images/I/71916r38cNL._AC_SX679_.jpg' rating={3} />

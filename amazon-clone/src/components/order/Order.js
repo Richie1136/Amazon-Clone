@@ -19,14 +19,13 @@ const Order = ({ order }) => {
             image={item.image}
             price={item.price}
             rating={item.rating}
+            hideButton
           />
         )
       })}
       <CurrencyFormat
         renderText={(value) => (
-          <>
-            <h3 className='order-total'>Order Total: {value}</h3>
-          </>
+          <h3 className='order-total'>Order Total: {value}</h3>
         )}
         decimalScale={2}
         value={order.data.amount / 100}

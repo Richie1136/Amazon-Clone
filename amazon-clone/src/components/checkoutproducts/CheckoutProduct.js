@@ -2,7 +2,7 @@ import './CheckoutProduct.css'
 import { useStateValue } from '../../store/state-context'
 
 
-const CheckoutProduct = ({ image, title, price, rating, id }) => {
+const CheckoutProduct = ({ image, title, price, rating, id, hideButton }) => {
 
   const [{ cart }, dispatch] = useStateValue()
 
@@ -24,12 +24,14 @@ const CheckoutProduct = ({ image, title, price, rating, id }) => {
           <small>$</small>
           <b>{price}</b>
         </p>
-        <p className='checkout-rating'>
+        <div className='checkout-rating'>
           {Array(rating).fill().map((_, i) => (
             <p>⭐️</p>
           ))}
-        </p>
-        <button onClick={removeFromCart}>Remove from Cart</button>
+        </div>
+        {!hideButton && (
+          <button onClick={removeFromCart}>Remove from Cart</button>
+        )}
       </div>
     </div>
   )
