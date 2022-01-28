@@ -33,10 +33,12 @@ const Header = () => {
             <span className='header-option-linetwo'>{user ? 'Sign out' : 'Sign in'}</span>
           </div>
         </Link>
-        <div className='header-option'>
-          <span className='header-option-lineone'>Returns</span>
-          <span className='header-option-linetwo'>& Orders</span>
-        </div>
+        <Link to='/orders'>
+          <div className='header-option'>
+            <span className='header-option-lineone'>Returns</span>
+            <span className='header-option-linetwo'>& Orders</span>
+          </div>
+        </Link>
         <div className='header-option'>
           <span className='header-option-lineone'>Your</span>
           <span className='header-option-linetwo'>Prime</span>
