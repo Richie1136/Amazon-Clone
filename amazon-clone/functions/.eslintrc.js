@@ -1,3 +1,5 @@
+/* eslint-disable semi */
+/* eslint-disable eol-last */
 module.exports = {
   root: true,
   env: {
@@ -11,4 +13,4 @@ module.exports = {
   rules: {
     quotes: ["error", "double"],
   },
-};
+}

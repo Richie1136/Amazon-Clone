@@ -1,8 +1,13 @@
+/* eslint-disable object-curly-spacing */
+/* eslint-disable max-len */
+/* eslint-disable quotes */
+/* eslint-disable semi */
+/* eslint-disable padded-blocks */
+
 const functions = require('firebase-functions')
 const express = require('express')
 const cors = require('cors')
-const stripe = require('stripe')('sk_test_51KLuaGKANSeUz9Rc8zbS9LOy07hX8NeqWeuIN4QURFx8uXn0oc0FT3eMIgJQmxzclSNuCovnaQMHSZrb5ZRgz7Aj00eZpZAwhX'
-)
+const stripe = require('stripe')('sk_test_51KLuaGKANSeUz9Rc8zbS9LOy07hX8NeqWeuIN4QURFx8uXn0oc0FT3eMIgJQmxzclSNuCovnaQMHSZrb5ZRgz7Aj00eZpZAwhX')
 
 // API
 
@@ -19,11 +24,11 @@ app.use(express.json())
 
 app.get("/", (request, response) => response.status(200).send("Hello World"))
 
-app.post("/payments/create", async (request, response) => {
+app.post("/payments/create", (request, response) => {
 
   const total = request.query.total
   console.log("Payment Request Recieved BOOM!", total)
-  const paymentIntent = await stripe.paymentIntents.create({
+  const paymentIntent = stripe.paymentIntents.create({
     amount: total,
     currency: 'usd',
   })
@@ -38,3 +43,4 @@ app.post("/payments/create", async (request, response) => {
 
 
 exports.api = functions.https.onRequest(app)
+
